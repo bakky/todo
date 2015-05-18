@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">Andriod_Todo</string>
+    <string name="app_name">待办记事</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="planets_array">
+        <item>我的待办记事</item>
+        <item>历史记录</item>
         <item>个人资料</item>
-        <item>历史</item>
     </string-array>
 
     <string name="drawer_open">Open drawer</string>
