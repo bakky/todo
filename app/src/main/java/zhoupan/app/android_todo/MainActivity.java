@@ -1,5 +1,6 @@
 package zhoupan.app.android_todo;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.SearchManager;
@@ -8,7 +9,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +22,7 @@ import android.widget.Toast;
 import zhoupan.app.andriod.com.andriod_todo.R;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     private String[] mPlanetTitles;
     private DrawerLayout mDrawerLayout;
@@ -46,8 +46,8 @@ public class MainActivity extends ActionBarActivity {
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         mTitle = mDrawerTitle = getTitle();
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
              */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mTitle);
+                getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
              */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle(mDrawerTitle);
+                getActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -130,7 +130,7 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_websearch:
                 // create intent to perform web search for this planet
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-                intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
+                intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
                 // catch event that there's no activity to handle intent
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
@@ -154,7 +154,7 @@ public class MainActivity extends ActionBarActivity {
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        getSupportActionBar().setTitle(mPlanetTitles[position]);
+        getActionBar().setTitle(mPlanetTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
