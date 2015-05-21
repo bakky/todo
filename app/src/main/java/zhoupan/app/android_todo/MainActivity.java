@@ -9,17 +9,16 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import zhoupan.app.andriod.com.andriod_todo.R;
+import zhoupan.app.android_todo.fragment.TodoListFragment;
 
 
 public class MainActivity extends Activity {
@@ -86,7 +85,7 @@ public class MainActivity extends Activity {
 
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.list_item, mPlanetTitles));
+                R.layout.drawer_list_item, mPlanetTitles));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -147,6 +146,7 @@ public class MainActivity extends Activity {
         // update the main content by replacing fragments
         Fragment fragment = new TodoListFragment();
         /*Bundle args = new Bundle();
+
         fragment.setArguments(args);*/
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -158,20 +158,4 @@ public class MainActivity extends Activity {
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
-    /**
-     * Fragment that appears in the "content_frame", shows a planet
-     */
-    public static class TodoListFragment extends Fragment {
-
-        public TodoListFragment() {
-            // Empty constructor required for fragment subclasses
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            //TODO create a view
-            return null;
-        }
-    }
 }
